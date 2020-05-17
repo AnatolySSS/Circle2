@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class PlayActivity extends AppCompatActivity {
 
-    ImageView circle = (ImageView) findViewById(R.id.circle);
+    ImageView circle;
     int score = 0;
     int stopmark;
     String name;
@@ -26,29 +26,13 @@ public class PlayActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play);
         Bundle arguments = getIntent().getExtras();
         name = arguments != null ? arguments.getString("name") : "";
-        typeOfCircle = arguments != null ? arguments.getString("typeOfCircle") : "";
-
-        switch (typeOfCircle) {
-            case "circle_black":
-                circle.setImageResource(R.drawable.circle_black);
-                break;
-            case "circle_blue":
-                circle.setImageResource(R.drawable.circle_blue);
-                break;
-            case "circle_red":
-                circle.setImageResource(R.drawable.circle_red);
-                break;
-            case "circle_purple":
-                circle.setImageResource(R.drawable.circle_purple);
-                break;
-            case "circle_purple2":
-                circle.setImageResource(R.drawable.circle_purple2);
-                break;
-        }
+        //typeOfCircle = arguments != null ? arguments.getString("typeOfCircle") : "";
+        setContentView(R.layout.activity_play);
+        super.onCreate(savedInstanceState);
+        circle = (ImageView) findViewById(R.id.circle);
+        //circle.setImageResource(R.drawable.circle_purple);
     }
 
     public int Screenwidth() {
@@ -80,8 +64,8 @@ public class PlayActivity extends AppCompatActivity {
         );
         String scoretxt = "";
         String scoretotal;
-        int circleWidth = circle.getWidth();
-        int circleHeight = circle.getHeight();
+        //int circleWidth = circle.getWidth();
+        //int circleHeight = circle.getHeight();
 
         if(score == 0) {
             new CountDownTimer(10000, 1000) {
@@ -109,8 +93,8 @@ public class PlayActivity extends AppCompatActivity {
             score++;
             scoretxt = String.valueOf(score);
 
-            int maxWidth = (int) (Screenwidth() - circleWidth);
-            int maxHeight = (int) (Screenheight() - circleHeight);
+            //int maxWidth = (int) (Screenwidth() - circleWidth);
+            //int maxHeight = (int) (Screenheight() - circleHeight);
 
             Random random = new Random();
             int xRand = random.nextInt(500);

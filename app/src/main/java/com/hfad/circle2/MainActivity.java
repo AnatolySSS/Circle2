@@ -11,39 +11,21 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    String typeOfCircle = "circle_black_big";
+    ImageView startCircle;
+    String typeOfCircle;
+    static final String ACCESS_MESSAGE = "ACCESS_MESSAGE";
+    private static  final int REQUEST_ACCESS_TYPE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ImageView startCircle = (ImageView) findViewById(R.id.startCircle);
-        super.onCreate(savedInstanceState);
+        startCircle = (ImageView) findViewById(R.id.startCircle);
         setContentView(R.layout.activity_main);
-        Bundle arguments = getIntent().getExtras();
-        typeOfCircle = arguments != null ? arguments.getString("typeOfCircle") : "";
-
-        switch (typeOfCircle) {
-            case "circle_black":
-                startCircle.setImageResource(R.drawable.circle_black);
-                break;
-            case "circle_blue":
-                startCircle.setImageResource(R.drawable.circle_blue);
-                break;
-            case "circle_red":
-                startCircle.setImageResource(R.drawable.circle_red);
-                break;
-            case "circle_purple":
-                startCircle.setImageResource(R.drawable.circle_purple);
-                break;
-            case "circle_purple2":
-                startCircle.setImageResource(R.drawable.circle_purple2);
-                break;
-        }
+        super.onCreate(savedInstanceState);
     }
 
     public void onClick (View view){
         EditText namefield = (EditText) findViewById(R.id.name);
         String namestr = namefield.getText().toString();
-
         Intent intent = new Intent(this, PlayActivity.class);
         intent.putExtra("name", namestr);
         startActivity(intent);
@@ -51,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void onChoice (View view) {
         Intent intent = new Intent(this, ChoiceActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_ACCESS_TYPE);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (data == null) {
+            return;
+        }
+        String accessMessage = data.getStringExtra(ACCESS_MESSAGE);
+        typeOfCircle = accessMessage;
     }
 }

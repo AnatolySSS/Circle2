@@ -11,6 +11,7 @@ public class ChoiceActivity extends AppCompatActivity {
 
     ImageView bigCircle;
     String typeOfCircle;
+    Intent data = new Intent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,35 +25,43 @@ public class ChoiceActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void onClickCircleBlack(View view) {
         bigCircle.setImageResource(R.drawable.circle_black_big);
-        typeOfCircle = "circle_black";
+        getValueOfCircle("circle_black");
+    }
+
+    public void onClickCircleBlack2(View view) {
+        bigCircle.setImageResource(R.drawable.circle_black2_big);
+        getValueOfCircle("circle_black");
     }
 
     public void onClickCircleBlue(View view) {
         bigCircle.setImageResource(R.drawable.circle_blue_big);
-        typeOfCircle = "circle_blue";
+        getValueOfCircle("circle_blue");
     }
 
     public void onClickCircleRed(View view) {
          bigCircle.setImageResource(R.drawable.circle_red_big);
-        typeOfCircle = "circle_red";
+        getValueOfCircle("circle_red");
     }
 
     public void onClickCirclePurple(View view) {
         bigCircle.setImageResource(R.drawable.circle_purple_big);
-        typeOfCircle = "circle_purple";
+        getValueOfCircle("circle_purple");
     }
 
     public void onClickCirclePurpleValued(View view) {
         bigCircle.setImageResource(R.drawable.circle_purple2_big);
-        typeOfCircle = "circle_purple2";
+        getValueOfCircle("circle_purple2");
     }
 
+    private void getValueOfCircle(String message){
+        data.putExtra(MainActivity.ACCESS_MESSAGE, message);
+    }
     public void OnClickChoiceCircleButton(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("typeOfCircle", typeOfCircle);
-        startActivity(intent);
+        //Intent intent = new Intent(this, MainActivity.class);
+        //intent.putExtra("typeOfCircle", typeOfCircle);
+        setResult(RESULT_OK, data);
+        finish();
     }
 }

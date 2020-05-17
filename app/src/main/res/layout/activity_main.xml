@@ -6,8 +6,7 @@
     android:id="@+id/ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/main_background">
+    tools:context=".MainActivity">
 
 
     <EditText
@@ -38,22 +37,21 @@
         android:id="@+id/ChoiceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
         android:onClick="onChoice"
-        android:layout_marginTop="36dp"
         android:text="Choice Circle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StartButton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/startCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ChoiceButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ChoiceButton"
-        app:srcCompat="@drawable/circle_black" />
+        app:layout_constraintTop_toBottomOf="@+id/StartButton"
+        app:srcCompat="@drawable/circle_black2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
