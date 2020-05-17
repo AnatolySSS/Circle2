@@ -18,9 +18,11 @@ import java.util.Random;
 
 public class PlayActivity extends AppCompatActivity {
 
+    ImageView circle = (ImageView) findViewById(R.id.circle);
     int score = 0;
     int stopmark;
     String name;
+    String typeOfCircle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,25 @@ public class PlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play);
         Bundle arguments = getIntent().getExtras();
         name = arguments != null ? arguments.getString("name") : "";
+        typeOfCircle = arguments != null ? arguments.getString("typeOfCircle") : "";
+
+        switch (typeOfCircle) {
+            case "circle_black":
+                circle.setImageResource(R.drawable.circle_black);
+                break;
+            case "circle_blue":
+                circle.setImageResource(R.drawable.circle_blue);
+                break;
+            case "circle_red":
+                circle.setImageResource(R.drawable.circle_red);
+                break;
+            case "circle_purple":
+                circle.setImageResource(R.drawable.circle_purple);
+                break;
+            case "circle_purple2":
+                circle.setImageResource(R.drawable.circle_purple2);
+                break;
+        }
     }
 
     public int Screenwidth() {
@@ -50,7 +71,6 @@ public class PlayActivity extends AppCompatActivity {
 
     public void onClick (View view){
 
-        ImageView circle = (ImageView) findViewById(R.id.circle);
         TextView textView = (TextView) findViewById(R.id.textView);
         TextView scoreText = (TextView) findViewById(R.id.scoreText);
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.ll);
@@ -81,7 +101,7 @@ public class PlayActivity extends AppCompatActivity {
                     stopmark = 1;
                 }
             }
-                    .start();
+            .start();
         }
 
         if(stopmark != 1) {
@@ -116,9 +136,6 @@ public class PlayActivity extends AppCompatActivity {
             Button againbutton = new Button(this);
             againbutton.setText("START");
             relativeLayout.addView(againbutton);
-
         }
     }
-
-
 }

@@ -68,7 +68,7 @@
         android:layout_height="match_parent"
         android:layout_weight="4">
 
-        <ScrollView
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:foregroundGravity="center"
@@ -80,10 +80,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="left">
 
                 <ImageView
-                    android:id="@+id/cirlce_black"
+                    android:id="@+id/circle_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -127,7 +127,7 @@
                     android:onClick="onClickCirclePurpleValued"
                     app:srcCompat="@drawable/circle_purple2" />
             </LinearLayout>
-        </ScrollView>
+        </HorizontalScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
