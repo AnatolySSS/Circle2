@@ -24,4 +24,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("name", namestr);
         startActivity(intent);
     }
+
+    public void onChoice (View view) {
+        Intent intent = new Intent(this, ChoiceActivity.class);
+        startActivity(intent);
+    }
 }
