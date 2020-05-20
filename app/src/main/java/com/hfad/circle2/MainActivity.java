@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -18,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        startCircle = (ImageView) findViewById(R.id.startCircle);
-        setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        startCircle = (ImageView) findViewById(R.id.startCircle);
     }
 
     public void onClick (View view){
@@ -28,7 +30,14 @@ public class MainActivity extends AppCompatActivity {
         String namestr = namefield.getText().toString();
         Intent intent = new Intent(this, PlayActivity.class);
         intent.putExtra("name", namestr);
+        intent.putExtra("typeOfCircle", typeOfCircle);
         startActivity(intent);
+    }
+
+    public void onClickAnim (View view){
+        Animation anim;
+        anim = AnimationUtils.loadAnimation(this, R.anim.myalpha);
+        startCircle.startAnimation(anim);
     }
 
     public void onChoice (View view) {
@@ -40,7 +49,24 @@ public class MainActivity extends AppCompatActivity {
         if (data == null) {
             return;
         }
-        String accessMessage = data.getStringExtra(ACCESS_MESSAGE);
-        typeOfCircle = accessMessage;
+        typeOfCircle = data.getStringExtra(ACCESS_MESSAGE);
+
+        if (typeOfCircle.equals("circle_black")) {
+            startCircle.setImageResource(R.drawable.circle_black);
+        } else if (typeOfCircle.equals("circle_black2")) {
+            startCircle.setImageResource(R.drawable.circle_black2);
+        } else if (typeOfCircle.equals("circle_blue2")) {
+            startCircle.setImageResource(R.drawable.circle_blue2);
+        } else if (typeOfCircle.equals("circle_blue")) {
+            startCircle.setImageResource(R.drawable.circle_blue);
+        } else if (typeOfCircle.equals("circle_red")) {
+            startCircle.setImageResource(R.drawable.circle_red);
+        } else if (typeOfCircle.equals("circle_red2")) {
+            startCircle.setImageResource(R.drawable.circle_red2);
+        } else if (typeOfCircle.equals("circle_purple")) {
+            startCircle.setImageResource(R.drawable.circle_purple);
+        } else if (typeOfCircle.equals("circle_purple2")) {
+            startCircle.setImageResource(R.drawable.circle_purple2);
+        }
     }
 }

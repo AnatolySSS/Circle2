@@ -2,6 +2,7 @@ package com.hfad.circle2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -26,13 +27,30 @@ public class PlayActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_play);
         Bundle arguments = getIntent().getExtras();
         name = arguments != null ? arguments.getString("name") : "";
-        //typeOfCircle = arguments != null ? arguments.getString("typeOfCircle") : "";
-        setContentView(R.layout.activity_play);
-        super.onCreate(savedInstanceState);
+        typeOfCircle = arguments != null ? arguments.getString("typeOfCircle") : "";
         circle = (ImageView) findViewById(R.id.circle);
-        //circle.setImageResource(R.drawable.circle_purple);
+
+        if (typeOfCircle.equals("circle_black")) {
+            circle.setImageResource(R.drawable.circle_black);
+        } else if (typeOfCircle.equals("circle_black2")) {
+            circle.setImageResource(R.drawable.circle_black2);
+        } else if (typeOfCircle.equals("circle_blue")) {
+            circle.setImageResource(R.drawable.circle_blue);
+        } else if (typeOfCircle.equals("circle_blue2")) {
+            circle.setImageResource(R.drawable.circle_blue2);
+        } else if (typeOfCircle.equals("circle_red")) {
+            circle.setImageResource(R.drawable.circle_red);
+        } else if (typeOfCircle.equals("circle_red2")) {
+            circle.setImageResource(R.drawable.circle_red2);
+        } else if (typeOfCircle.equals("circle_purple")) {
+            circle.setImageResource(R.drawable.circle_purple);
+        } else if (typeOfCircle.equals("circle_purple2")) {
+            circle.setImageResource(R.drawable.circle_purple2);
+        }
     }
 
     public int Screenwidth() {
@@ -79,7 +97,7 @@ public class PlayActivity extends AppCompatActivity {
                     timerText.setText(timertxt);
                 }
 
-                //Задаем действия после завершения отсчета (высвечиваем надпись "Бабах!"):
+                //Задаем действия после завершения отсчета
                 public void onFinish() {
                     timerText.setText("Time's out!");
                     stopmark = 1;
