@@ -14,7 +14,7 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     ImageView startCircle;
-    String typeOfCircle;
+    String typeOfCircle = "circle_black";
     static final String ACCESS_MESSAGE = "ACCESS_MESSAGE";
     private static  final int REQUEST_ACCESS_TYPE = 1;
 
