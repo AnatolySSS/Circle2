@@ -14,15 +14,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <Button
-            android:id="@+id/btnBuy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Buy"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
@@ -42,7 +33,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_weight="8"
                 android:onClick="OnClickChoiceCircleButton"
-                app:srcCompat="@drawable/circle_black_big" />
+                app:srcCompat="@drawable/circle_black2_big" />
 
         </LinearLayout>
 
@@ -68,15 +59,6 @@
                 android:layout_gravity="left">
 
                 <ImageView
-                    android:id="@+id/circle_black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:onClick="onClickCircleBlack"
-                    app:srcCompat="@drawable/circle_black" />
-
-                <ImageView
                     android:id="@+id/circle_black2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,31 +68,13 @@
                     app:srcCompat="@drawable/circle_black2" />
 
                 <ImageView
-                    android:id="@+id/circle_blue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:onClick="onClickCircleBlue"
-                    app:srcCompat="@drawable/circle_blue" />
-
-                <ImageView
                     android:id="@+id/circle_blue2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:onClick="onClickCircleBlue2"
-                    app:srcCompat="@drawable/circle_blue2" />
-
-                <ImageView
-                    android:id="@+id/circle_red"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:onClick="onClickCircleRed"
-                    app:srcCompat="@drawable/circle_red" />
+                    app:srcCompat="@drawable/circle_blue_locked" />
 
                 <ImageView
                     android:id="@+id/circle_red2"
@@ -119,16 +83,7 @@
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:onClick="onClickCircleRed2"
-                    app:srcCompat="@drawable/circle_red2" />
-
-                <ImageView
-                    android:id="@+id/circle_purple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:onClick="onClickCirclePurple"
-                    app:srcCompat="@drawable/circle_purple" />
+                    app:srcCompat="@drawable/circle_red_locked" />
 
                 <ImageView
                     android:id="@+id/circle_purple_valued"
@@ -137,7 +92,7 @@
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:onClick="onClickCirclePurpleValued"
-                    app:srcCompat="@drawable/circle_purple2" />
+                    app:srcCompat="@drawable/circle_purple_locked" />
             </LinearLayout>
         </HorizontalScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

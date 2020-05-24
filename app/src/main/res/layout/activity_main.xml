@@ -9,50 +9,93 @@
     tools:context=".MainActivity">
 
 
-    <EditText
-        android:id="@+id/name"
+    <TextView
+        android:id="@+id/circle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:textColor="@color/black"
+        android:layout_marginTop="56dp"
+        android:text="CIRCLE2"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/StartButton"
+    <TextView
+        android:id="@+id/tapToGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="START"
-        android:onClick="onClick"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="TAP TO GAME"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ChoiceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:onClick="onChoice"
-        android:text="Choice Circle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/circle2" />
 
     <ImageView
         android:id="@+id/startCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/ChoiceButton"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StartButton"
-        app:srcCompat="@drawable/circle_black"
-        android:onClick="onClickAnim"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/circle_black2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="4"
+            android:paddingHorizontal="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:weightSum="4">
+
+            <ImageView
+                android:id="@+id/imageNoAds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/button1_no_ads_grey"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/imageResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/button1_results_grey"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/imageChangeCircle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/button1_circles_grey"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:onClick="onChoice"/>
+
+            <ImageView
+                android:id="@+id/imageBuy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/button1_buy_grey"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,6 @@ package com.hfad.circle2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -22,7 +21,6 @@ public class PlayActivity extends AppCompatActivity {
     ImageView circle;
     int score = 0;
     int stopmark;
-    String name;
     String typeOfCircle;
 
     @Override
@@ -30,24 +28,15 @@ public class PlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
         Bundle arguments = getIntent().getExtras();
-        name = arguments != null ? arguments.getString("name") : "";
         typeOfCircle = arguments != null ? arguments.getString("typeOfCircle") : "";
         circle = (ImageView) findViewById(R.id.circle);
 
-        if (typeOfCircle.equals("circle_black")) {
-            circle.setImageResource(R.drawable.circle_black);
-        } else if (typeOfCircle.equals("circle_black2")) {
+        if (typeOfCircle.equals("circle_black2")) {
             circle.setImageResource(R.drawable.circle_black2);
-        } else if (typeOfCircle.equals("circle_blue")) {
-            circle.setImageResource(R.drawable.circle_blue);
         } else if (typeOfCircle.equals("circle_blue2")) {
             circle.setImageResource(R.drawable.circle_blue2);
-        } else if (typeOfCircle.equals("circle_red")) {
-            circle.setImageResource(R.drawable.circle_red);
         } else if (typeOfCircle.equals("circle_red2")) {
             circle.setImageResource(R.drawable.circle_red2);
-        } else if (typeOfCircle.equals("circle_purple")) {
-            circle.setImageResource(R.drawable.circle_purple);
         } else if (typeOfCircle.equals("circle_purple2")) {
             circle.setImageResource(R.drawable.circle_purple2);
         }
@@ -128,16 +117,12 @@ public class PlayActivity extends AppCompatActivity {
 
             circle.setLayoutParams(layoutParams);
         } else {
-            scoretotal = name + ", you score is " + score;
+            scoretotal = "Your score is " + score;
             textView.setText(scoretotal);
 
             layoutParams.gravity = Gravity.CENTER;
             layoutParams.weight = 1;
             circle.setLayoutParams(layoutParams);
-
-            Button againbutton = new Button(this);
-            againbutton.setText("START");
-            relativeLayout.addView(againbutton);
         }
     }
 }

@@ -9,12 +9,22 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    Animation anim_circle;
+    Animation anim_exit_act;
     ImageView startCircle;
-    String typeOfCircle = "circle_black";
+    ImageView imageNoAds;
+    ImageView imageResults;
+    ImageView imageChangeCircle;
+    ImageView imageBuy;
+    TextView circle2;
+    TextView tapToGame;
+
+    String typeOfCircle = "circle_black2";
     static final String ACCESS_MESSAGE = "ACCESS_MESSAGE";
     private static  final int REQUEST_ACCESS_TYPE = 1;
 
@@ -23,21 +33,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startCircle = (ImageView) findViewById(R.id.startCircle);
+        imageNoAds = (ImageView) findViewById(R.id.imageNoAds);
+        imageResults = (ImageView) findViewById(R.id.imageResults);
+        imageChangeCircle = (ImageView) findViewById(R.id.imageChangeCircle);
+        imageBuy = (ImageView) findViewById(R.id.imageBuy);
+        circle2 = (TextView) findViewById(R.id.circle2);
+        tapToGame = (TextView) findViewById(R.id.tapToGame);
     }
 
     public void onClick (View view){
-        EditText namefield = (EditText) findViewById(R.id.name);
-        String namestr = namefield.getText().toString();
         Intent intent = new Intent(this, PlayActivity.class);
-        intent.putExtra("name", namestr);
         intent.putExtra("typeOfCircle", typeOfCircle);
-        startActivity(intent);
-    }
 
-    public void onClickAnim (View view){
-        Animation anim;
-        anim = AnimationUtils.loadAnimation(this, R.anim.myalpha);
-        startCircle.startAnimation(anim);
+        anim_exit_act = AnimationUtils.loadAnimation(this, R.anim.anim_alpha_main);
+        imageNoAds.startAnimation(anim_exit_act);
+        imageResults.startAnimation(anim_exit_act);
+        imageChangeCircle.startAnimation(anim_exit_act);
+        imageBuy.startAnimation(anim_exit_act);
+        circle2.startAnimation(anim_exit_act);
+        tapToGame.startAnimation(anim_exit_act);
+
+        startActivity(intent);
     }
 
     public void onChoice (View view) {
@@ -51,22 +67,16 @@ public class MainActivity extends AppCompatActivity {
         }
         typeOfCircle = data.getStringExtra(ACCESS_MESSAGE);
 
-        if (typeOfCircle.equals("circle_black")) {
-            startCircle.setImageResource(R.drawable.circle_black);
-        } else if (typeOfCircle.equals("circle_black2")) {
+        if (typeOfCircle.equals("circle_black2")) {
             startCircle.setImageResource(R.drawable.circle_black2);
         } else if (typeOfCircle.equals("circle_blue2")) {
             startCircle.setImageResource(R.drawable.circle_blue2);
-        } else if (typeOfCircle.equals("circle_blue")) {
-            startCircle.setImageResource(R.drawable.circle_blue);
-        } else if (typeOfCircle.equals("circle_red")) {
-            startCircle.setImageResource(R.drawable.circle_red);
         } else if (typeOfCircle.equals("circle_red2")) {
             startCircle.setImageResource(R.drawable.circle_red2);
-        } else if (typeOfCircle.equals("circle_purple")) {
-            startCircle.setImageResource(R.drawable.circle_purple);
         } else if (typeOfCircle.equals("circle_purple2")) {
             startCircle.setImageResource(R.drawable.circle_purple2);
         }
+        anim_circle = AnimationUtils.loadAnimation(this, R.anim.myalpha);
+        startCircle.startAnimation(anim_circle);
     }
 }
