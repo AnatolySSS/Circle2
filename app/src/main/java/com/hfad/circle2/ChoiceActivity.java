@@ -75,7 +75,10 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
     }
 
     private void initBilling() {
-        billingClient = BillingClient.newBuilder(this).setListener(new PurchasesUpdatedListener() {
+        final BillingClient.Builder builder = BillingClient.newBuilder(this);
+        builder.enablePendingPurchases();
+
+        billingClient = builder.setListener(new PurchasesUpdatedListener() {
             @Override
             public void onPurchasesUpdated(BillingResult billingResult, @Nullable List<Purchase> purchases) {
                 int responseCode = billingResult.getResponseCode();
@@ -93,7 +96,8 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
         billingClient.startConnection(new BillingClientStateListener() {
             @Override
             public void onBillingSetupFinished(BillingResult billingResult) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                int responseCode = billingResult.getResponseCode();
+                if (responseCode == BillingClient.BillingResponseCode.OK) {
                     querySkuDetails();
                     List<Purchase> purchasesList = queryPurchases();
 
@@ -179,6 +183,7 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
 
     //New code
     private void launchBilling(String skuId) {
+        SkuDetails skuDetails = mSkuDetailsMap.get(skuId);
         BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
                 .setSkuDetails(mSkuDetailsMap.get(skuId))
                 .build();
@@ -234,7 +239,7 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
     }
 
     private void getValueOfCircle(String message){
-        data.putExtra(MainActivity.ACCESS_MESSAGE, message);
+        data.putExtra(/*MainActivity.ACCESS_MESSAGE, */message, "");
     }
 
     //Old code
