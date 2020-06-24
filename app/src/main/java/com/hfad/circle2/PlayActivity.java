@@ -20,6 +20,10 @@ public class PlayActivity extends AppCompatActivity {
     int score = 0;
     int stopmark;
     String typeOfCircle;
+    int width;
+    int height;
+    int circleWidth;
+    int circleHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +42,11 @@ public class PlayActivity extends AppCompatActivity {
         } else if (typeOfCircle.equals("circle_purple2")) {
             circle.setImageResource(R.drawable.circle_purple2);
         }
+
+        DisplayMetrics displaymetrics = getResources().getDisplayMetrics();
+        width = displaymetrics.widthPixels;
+        height = displaymetrics.heightPixels;
     }
-
-
-    DisplayMetrics displaymetrics = getResources().getDisplayMetrics();
-    int width = displaymetrics.widthPixels;
-    int height = displaymetrics.heightPixels;
-
-
 
     /*public int Screenwidth() {
         int width;
@@ -67,6 +68,9 @@ public class PlayActivity extends AppCompatActivity {
 
     public void onClick (View view){
 
+        /*circleWidth = circle.getWidth();
+        circleHeight = circle.getHeight();*/
+
         TextView textView = (TextView) findViewById(R.id.textView);
         TextView scoreText = (TextView) findViewById(R.id.scoreText);
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.ll);
@@ -76,8 +80,6 @@ public class PlayActivity extends AppCompatActivity {
         );
         String scoretxt = "";
         String scoretotal;
-        //int circleWidth = circle.getWidth();
-        //int circleHeight = circle.getHeight();
 
         if(score == 0) {
             new CountDownTimer(10000, 1000) {
@@ -105,14 +107,14 @@ public class PlayActivity extends AppCompatActivity {
             score++;
             scoretxt = String.valueOf(score);
 
-            //int maxWidth = (int) (Screenwidth() - circleWidth);
-            //int maxHeight = (int) (Screenheight() - circleHeight);
+            int maxWidth = width - 360;
+            int maxHeight = height - 360;
 
             Random random = new Random();
-            int xRand = random.nextInt(500);
-            int yRand = random.nextInt(700);
+            int xRand = random.nextInt(maxWidth);
+            int yRand = random.nextInt(maxHeight);
 
-            String string = "X: " + width + "; Y: " + height;
+            String string = "width: " + width + "; height: " + height;
 
             textView.setText(string);
             scoreText.setText(scoretxt);
