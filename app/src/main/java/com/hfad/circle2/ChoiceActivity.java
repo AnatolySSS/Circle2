@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -133,7 +132,7 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
         billingClient.querySkuDetailsAsync(skuDetailsParamsBuilder.build(), new SkuDetailsResponseListener() {
             @Override
             public void onSkuDetailsResponse(BillingResult billingResult, List<SkuDetails> skuDetailsList) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && skuDetailsList != null) {
                     for (SkuDetails skuDetails : skuDetailsList) {
                         mSkuDetailsMap.put(skuDetails.getSku(), skuDetails);
                     }

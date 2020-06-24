@@ -2,13 +2,11 @@ package com.hfad.circle2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Point;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -42,7 +40,14 @@ public class PlayActivity extends AppCompatActivity {
         }
     }
 
-    public int Screenwidth() {
+
+    DisplayMetrics displaymetrics = getResources().getDisplayMetrics();
+    int width = displaymetrics.widthPixels;
+    int height = displaymetrics.heightPixels;
+
+
+
+    /*public int Screenwidth() {
         int width;
         Point size = new Point();
         WindowManager w = getWindowManager();
@@ -58,7 +63,7 @@ public class PlayActivity extends AppCompatActivity {
         w.getDefaultDisplay().getSize(size);
         height = size.y;
         return height;
-    }
+    }*/
 
     public void onClick (View view){
 
@@ -107,7 +112,7 @@ public class PlayActivity extends AppCompatActivity {
             int xRand = random.nextInt(500);
             int yRand = random.nextInt(700);
 
-            String string = "X: " + xRand + "; Y: " + yRand;
+            String string = "X: " + width + "; Y: " + height;
 
             textView.setText(string);
             scoreText.setText(scoretxt);
