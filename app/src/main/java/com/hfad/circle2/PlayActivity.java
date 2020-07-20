@@ -8,7 +8,6 @@ import android.os.CountDownTimer;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -29,7 +28,7 @@ public class PlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play);
         Bundle arguments = getIntent().getExtras();
         typeOfCircle = arguments != null ? arguments.getString("typeOfCircle") : "";
-        circle = (ImageView) findViewById(R.id.circle);
+        circle = findViewById(R.id.circle);
 
         if (typeOfCircle.equals("circle_black2")) {
             circle.setImageResource(R.drawable.circle_black2);
@@ -60,24 +59,22 @@ public class PlayActivity extends AppCompatActivity {
         return height;
     }
 
-    public void onClick (View view){
+    public void onClick(View view) {
 
-        TextView textView = (TextView) findViewById(R.id.textView);
-        TextView scoreText = (TextView) findViewById(R.id.scoreText);
-        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.ll);
+        TextView textView = findViewById(R.id.textView);
+        TextView scoreText = findViewById(R.id.scoreText);
+        RelativeLayout relativeLayout = findViewById(R.id.ll);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
         String scoretxt = "";
-        String scoretotal;
-        //int circleWidth = circle.getWidth();
-        //int circleHeight = circle.getHeight();
+        String scoreTotal;
 
-        if(score == 0) {
+        if (score == 0) {
             new CountDownTimer(10000, 1000) {
 
-                TextView timerText = (TextView) findViewById(R.id.timerText);
+                TextView timerText = findViewById(R.id.timerText);
 
                 //Здесь обновляем текст счетчика обратного отсчета с каждой секундой
                 public void onTick(long millisUntilFinished) {
@@ -92,16 +89,13 @@ public class PlayActivity extends AppCompatActivity {
                     stopmark = 1;
                 }
             }
-            .start();
+                    .start();
         }
 
-        if(stopmark != 1) {
+        if (stopmark != 1) {
 
             score++;
             scoretxt = String.valueOf(score);
-
-            //int maxWidth = (int) (Screenwidth() - circleWidth);
-            //int maxHeight = (int) (Screenheight() - circleHeight);
 
             Random random = new Random();
             int xRand = random.nextInt(500);
@@ -117,8 +111,8 @@ public class PlayActivity extends AppCompatActivity {
 
             circle.setLayoutParams(layoutParams);
         } else {
-            scoretotal = "Your score is " + score;
-            textView.setText(scoretotal);
+            scoreTotal = "Your score is " + score;
+            textView.setText(scoreTotal);
 
             layoutParams.gravity = Gravity.CENTER;
             layoutParams.weight = 1;

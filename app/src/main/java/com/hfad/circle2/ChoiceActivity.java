@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -46,7 +47,7 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choice);
-        bigCircle = (ImageView) findViewById(R.id.bigCircle);
+        bigCircle = findViewById(R.id.bigCircle);
         /*buttonBuyProduct = (Button) findViewById(R.id.btnBuy);
         buttonBuyProduct.setEnabled(false);*/
         getValueOfCircle("circle_black");
@@ -81,11 +82,14 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
         billingClient = builder.setListener(new PurchasesUpdatedListener() {
             @Override
             public void onPurchasesUpdated(BillingResult billingResult, @Nullable List<Purchase> purchases) {
+                if (purchases != null)
+                    Log.i("INFORM", purchases.get(0).toString());
+                Log.i("INFORM", "Test");
                 int responseCode = billingResult.getResponseCode();
                 if (responseCode == BillingClient.BillingResponseCode.OK && purchases != null){
-                    //for (Purchase purchase : purchases) {
-                        payComplete();
-                    //}
+                    for (Purchase purchase : purchases) {
+                        payComplete(purchase);
+                    }
                 } /*else if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
 
                 } else if (responseCode == BillingClient.BillingResponseCode.USER_CANCELED) {
@@ -93,6 +97,8 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
                 }*/
             }
         }).build();
+
+
         billingClient.startConnection(new BillingClientStateListener() {
             @Override
             public void onBillingSetupFinished(BillingResult billingResult) {
@@ -102,15 +108,16 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
                     List<Purchase> purchasesList = queryPurchases();
 
                     for (int i = 0; i < purchasesList.size(); i++) {
-                        String purchaseId = purchasesList.get(i).getSku();
-                        if(TextUtils.equals(circle_red2, purchaseId)) {
-                            payComplete();
-                        } else if (TextUtils.equals(circle_blue2, purchaseId)) {
-                            payComplete();
-                        }
-                        else if (TextUtils.equals(circle_purple2, purchaseId)) {
-                            payComplete();
-                        }
+                        Purchase purchase = purchasesList.get(i);
+                        payComplete(purchase);
+//                        if(TextUtils.equals(circle_red2, purchaseId)) {
+//                            (purchase);
+//                        } else if (TextUtils.equals(circle_blue2, purchaseId)) {
+//                            payComplete(purchase);
+//                        }
+//                        else if (TextUtils.equals(circle_purple2, purchaseId)) {
+//                            payComplete(purchase);
+//                        }
                     }
                 }
             }
@@ -191,7 +198,12 @@ public class ChoiceActivity extends AppCompatActivity /*implements PurchasesUpda
     }
 
     //New code
-    private void payComplete() {
+    private void payComplete(Purchase purchase) {
+        if (purchase == null) {
+            Log.i("INFO", "purchase is null");
+            return;
+        }
+        String purchaseId = purchase.getSku();
         Toast.makeText(this, "You've got the new one", Toast.LENGTH_SHORT).show();
     }
 

@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startCircle = (ImageView) findViewById(R.id.startCircle);
-        imageNoAds = (ImageView) findViewById(R.id.imageNoAds);
-        imageResults = (ImageView) findViewById(R.id.imageResults);
-        imageChangeCircle = (ImageView) findViewById(R.id.imageChangeCircle);
-        imageBuy = (ImageView) findViewById(R.id.imageBuy);
-        circle2 = (TextView) findViewById(R.id.circle2);
-        tapToGame = (TextView) findViewById(R.id.tapToGame);
+        startCircle = findViewById(R.id.startCircle);
+        imageNoAds = findViewById(R.id.imageNoAds);
+        imageResults = findViewById(R.id.imageResults);
+        imageChangeCircle = findViewById(R.id.imageChangeCircle);
+        imageBuy = findViewById(R.id.imageBuy);
+        circle2 = findViewById(R.id.circle2);
+        tapToGame = findViewById(R.id.tapToGame);
     }
 
     public void onClick (View view){
